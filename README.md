@@ -13,3 +13,4 @@ DooM as a mod is the best I can do.
 ## Because I definitely tend to forget things
 
 - Offsetting sprites on Y is half res - 40
+- HOWEVER, when offsetting ADS sprites, half res then - 60

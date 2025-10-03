@@ -255,6 +255,17 @@ extend class CitadelWeapon
 			return;
 		}
 		
+		if(plr.CountInv("AimingToken") == 1)
+		{
+			WeaponScaleX = 0.5;
+			WeaponScaleY = 0.5;
+		}
+		else
+		{
+			WeaponScaleX = 0.25;
+			WeaponScaleY = 0.25;
+		}
+		
 		if (plr.Player.ReadyWeapon != self)
 		{
 			GunBraced = false;

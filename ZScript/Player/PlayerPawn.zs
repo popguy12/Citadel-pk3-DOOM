@@ -119,6 +119,7 @@ class CitadelPlayer : DoomPlayer
 	States
 	{
 		Spawn:
+			TNT1 A 0 A_JumpIf(CountInv("HolsterToken") == 1, "Spawn3");
 			TNT1 A 0 A_JumpIfInventory("AimingToken", 1, "Spawn2");
 			TNT1 A 0 A_Overlay(-50, "StunnerCheck", true);
 			MART C 10;
@@ -127,8 +128,12 @@ class CitadelPlayer : DoomPlayer
 			TNT1 A 0 A_JumpIf(CountInv("AimingToken") == 0, "Spawn");
 			MART B 10;
 			Loop;
+		Spawn3:
+			TNT1 A 0 A_JumpIf(CountInv("HolsterToken") == 0, "Spawn");
+			MART A 10;
+			Loop;
 		See:
-			MART C 3;
+			MART A 3;
 			Loop;
 		Missile:
 			MART B 6;
@@ -176,19 +181,24 @@ class CitadelPlayer : DoomPlayer
 			Stop;
 		KickCheck:
 			TNT1 A 0;
+			TNT1 A 0
+			{
+				A_OverlayScale(-50, 0.25, 0.25, WOF_RELATIVE);
+			}
 			TNT1 A 1;
 		DoKick:
 			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInventory("IsProne", 1, "KickCheckTakeToken");
-			TNT1 A 0 A_OverlayFlags(-10, PSPF_ADDWEAPON, false);
-			TNT1 A 0 A_OverlayOffset(-10, 0, 32);
+			TNT1 A 0 A_OverlayFlags(-50, PSPF_ADDWEAPON, false);
+			//TNT1 A 0 A_JumpIf(momz > 0, "AirKick");
 			TNT1 A 0 A_JumpIf(PressingCrouch() && momx != 0 && momy != 0, "Slide");
+			TNT1 A 0 A_OverlayOffset(-50, 374, 704);
 			TNT1 A 0
 			{
 				A_PlaySound("KICK",69);
 			}
-			K1CK ABCDE 1;
-			K1CK F 2
+			KCKB ABC 2;
+			KCKB D 8
 			{	
 				if (CountInv("PowerStrength") == 1)
 				{
@@ -198,46 +208,47 @@ class CitadelPlayer : DoomPlayer
 				//A_FireCustomMissile("KickAttack", 0, 0, 0, -7);
 				return;
 			}
-			K1CK EDCBA 1;
+			KCKB CBA 2;
 			TNT1 A 0;
 			Goto KickCheckTakeToken;
 		Slide:
 			TNT1 A 0
 			{
+				A_OverlayOffset(-50, 352, 216);
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				A_StartSound("SLIDE", CHAN_WEAPON, CHAN_OVERLAP);
 			}
-			SLDK ABCD 1;
+			KCKA A 2;
 		SlideLoop:
-			SLDK F 2
+			KCKA B 2
 			{
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				//A_CustomPunch(5, FALSE, 0, 0, 64);
 				A_Recoil(-24);
 			}
 			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			SLDK E 3
+			KCKA B 2
 			{
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				//A_CustomPunch(5, FALSE, 0, 0, 64);
 				A_Recoil(-8);
 			}
 			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			SLDK F 2
+			KCKA B 2
 			{
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				//A_CustomPunch(5, FALSE, 0, 0, 64);
 				A_Recoil(-8);
 			}
 			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			SLDK G 3
+			KCKA B 2
 			{
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				//A_CustomPunch(5, FALSE, 0, 0, 64);
 				A_Recoil(-8);
 			}
 			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			SLDK F 2
+			KCKA B 2
 			{
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				//A_CustomPunch(5, FALSE, 0, 0, 64);
@@ -246,7 +257,7 @@ class CitadelPlayer : DoomPlayer
 			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
 			TNT1 A 0; //A_JumpIf(BW_SlideLoopSlope(), "SlideLoop")
 		SlideEnd:
-			SLDK HIJK 1;
+			KCKA BA 2;
 			Goto KickCheckTakeToken;
 	}
 }
