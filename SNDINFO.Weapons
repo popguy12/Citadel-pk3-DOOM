@@ -1,0 +1,8 @@
+//Makarov PM
+pm/fire1	"Sounds/Weapons/Slot1/Makarov/MPMFIRE.wav"
+pm/clipout	"Sounds/Weapons/Slot1/Makarov/MPMREL1.wav"
+pm/clipin	"Sounds/Weapons/Slot1/Makarov/MPMREL2.wav"
+pm/lock	"Sounds/Weapons/Slot1/Makarov/MPMREL3.wav"
+pm/clipout2	"Sounds/Weapons/Slot1/Makarov/MPMREL4.wav"
+pm/raise	"Sounds/Weapons/Slot1/Makarov/MPMRAISE.wav"
+pm/lower	"Sounds/Weapons/Slot1/Makarov/MPMLOWER.wav"
