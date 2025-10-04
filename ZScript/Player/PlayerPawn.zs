@@ -184,12 +184,13 @@ class CitadelPlayer : DoomPlayer
 			TNT1 A 0
 			{
 				A_OverlayScale(-50, 0.25, 0.25, WOF_RELATIVE);
+				A_OverlayFlags(-50, PSPF_ADDWEAPON, false);
+				A_OverlayFlags(-50, PSPF_ADDBOB, false);
 			}
 			TNT1 A 1;
 		DoKick:
 			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInventory("IsProne", 1, "KickCheckTakeToken");
-			TNT1 A 0 A_OverlayFlags(-50, PSPF_ADDWEAPON, false);
 			TNT1 A 0 A_JumpIf(momz > 0 && momx == 0 && momy == 0, "AirKick");
 			TNT1 A 0 A_JumpIf(PressingCrouch() && momx != 0 && momy != 0, "Slide");
 			TNT1 A 0 A_OverlayOffset(-50, 390, 316);
