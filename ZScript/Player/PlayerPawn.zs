@@ -43,7 +43,7 @@ class CitadelPlayer : DoomPlayer
 			AttackZOffset = 16;
 			JumpZ = 6;
 			MaxStepHeight = 16;
-			A_SetScale(0.075, 0.050);
+			A_SetScale(0.075, 0.075);
 			A_GiveInventory("IsCrouch", 1);
 		}
 		else
@@ -190,15 +190,18 @@ class CitadelPlayer : DoomPlayer
 			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInventory("IsProne", 1, "KickCheckTakeToken");
 			TNT1 A 0 A_OverlayFlags(-50, PSPF_ADDWEAPON, false);
-			//TNT1 A 0 A_JumpIf(momz > 0, "AirKick");
+			TNT1 A 0 A_JumpIf(momz > 0 && momx == 0 && momy == 0, "AirKick");
 			TNT1 A 0 A_JumpIf(PressingCrouch() && momx != 0 && momy != 0, "Slide");
-			TNT1 A 0 A_OverlayOffset(-50, 374, 704);
+			TNT1 A 0 A_OverlayOffset(-50, 390, 316);
 			TNT1 A 0
 			{
 				A_PlaySound("KICK",69);
+				A_Recoil(-1);
 			}
-			KCKB ABC 2;
-			KCKB D 8
+			KCKB AAB 1;
+			TNT1 A 0 A_OverlayOffset(-50, 390, 716);
+			KCKB C 1;
+			KCKB D 6
 			{	
 				if (CountInv("PowerStrength") == 1)
 				{
@@ -208,56 +211,217 @@ class CitadelPlayer : DoomPlayer
 				//A_FireCustomMissile("KickAttack", 0, 0, 0, -7);
 				return;
 			}
-			KCKB CBA 2;
+			KCKB C 2;
+			TNT1 A 0 A_OverlayOffset(-50, 390, 316);
+			KCKB BA 2;
 			TNT1 A 0;
 			Goto KickCheckTakeToken;
 		Slide:
 			TNT1 A 0
 			{
-				A_OverlayOffset(-50, 352, 216);
+				A_OverlayOffset(-50, 384, 296);
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				A_StartSound("SLIDE", CHAN_WEAPON, CHAN_OVERLAP);
+				A_GiveInventory("Sliding",1);
 			}
 			KCKA A 2;
 		SlideLoop:
-			KCKA B 2
+			KCKA BB 1
 			{
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
 				A_Recoil(-24);
 			}
 			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			KCKA B 2
+			KCKA BB 1
 			{
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
 				A_Recoil(-8);
 			}
 			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			KCKA B 2
+			KCKA BB 1
 			{
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
 				A_Recoil(-8);
 			}
 			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			KCKA B 2
+			KCKA BB 1
 			{
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
 				A_Recoil(-8);
 			}
 			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			KCKA B 2
+			KCKA BB 1
 			{
 				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
 				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
 				A_Recoil(-6);
 			}
 			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
-			TNT1 A 0; //A_JumpIf(BW_SlideLoopSlope(), "SlideLoop")
+			KCKA BB 1
+			{
+				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
+				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
+				A_Recoil(-6);
+			}
+			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
+			KCKA BB 1
+			{
+				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
+				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
+				A_Recoil(-6);
+			}
+			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
+			KCKA BB 1
+			{
+				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
+				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
+				A_Recoil(-4);
+			}
+			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
+			KCKA BB 1
+			{
+				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
+				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
+				A_Recoil(-4);
+			}
+			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
+			KCKA BB 1
+			{
+				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
+				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
+				A_Recoil(-2);
+			}
+			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
+			KCKA BB 1
+			{
+				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
+				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
+				A_Recoil(-2);
+			}
+			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
+			KCKA BB 1
+			{
+				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
+				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
+				A_Recoil(-2);
+			}
+			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
+			KCKA BB 1
+			{
+				A_QuakeEx(1, 1, 1, 15, 0, 500, "", 0, 0, 0, 0, 0, 0, 0.25);
+				//A_CustomPunch(5, FALSE, 0, 0, 64);
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
+				A_Recoil(-2);
+			}
+		SlideLoop2:
+			KCKA B 1
+			{
+				if(Pitch>=10)
+				{
+					A_SetPitch(pitch-pitch/2+6);
+				}
+				A_OverlayOffset(-50, 386, (-pitch*2)+328);
+			}
+			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
+			Loop;
 		SlideEnd:
+			TNT1 A 0 A_TakeInventory("Sliding");
 			KCKA BA 2;
+			Goto KickCheckTakeToken;
+		AirKick:
+			TNT1 A 0 A_OverlayOffset(-50, 800, 296);
+			TNT1 A 0
+			{
+				A_PlaySound("KICK",69);
+				A_Recoil(-8);
+			}
+			KCKC AB 2;
+			KCKC C 2
+			{	
+				A_OverlayOffset(-50, 224, 296);
+				if (CountInv("PowerStrength") == 1)
+				{
+					//A_FireCustomMissile("SuperKickAttack", 0, 0, 5, -7);
+					return;
+				}			
+				//A_FireCustomMissile("KickAttack", 0, 0, 0, -7);
+				return;
+			}
+			TNT1 A 0 A_OverlayOffset(-50, 800, 296);
+			KCKC DE 2;
+			TNT1 A 0 A_OverlayOffset(-50, 724, 236);
+			KCKC F 2;
+			TNT1 A 0 A_OverlayOffset(-50, 756, 236);
+			KCKC G 2;
+			TNT1 A 0;
 			Goto KickCheckTakeToken;
 	}
 }
@@ -342,6 +506,10 @@ class Z_NashMove : CustomInventory
 				if(Owner.CountInv("IsProne"))
 				{
 					mod = mod * 0.2;
+				}
+				if(Owner.CountInv("Sliding"))
+				{
+					mod = 0;
 				}
 				
 				Owner.A_SetSpeed(s * mod);
@@ -481,6 +649,14 @@ class IsCrouch : Inventory
 }
 
 class Kicking : Inventory
+{
+	Default
+	{
+		Inventory.MaxAmount 1;
+	}
+}
+
+class Sliding : Inventory
 {
 	Default
 	{

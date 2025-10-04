@@ -102,14 +102,14 @@ class BD_Footsteps : Actor
 			//no sound if steppin on sky
 			if (floorpic == skyflatnum)
 				stepsound = "none";
-			else if (toFollow.CountInv("IsProne") || toFollow.CountInv("Kicking"))
+			else if (toFollow.CountInv("IsProne") || toFollow.CountInv("Kicking") || toFollow.CountInv("Sliding"))
 				stepsound = "Prone/default";
 			else
 				stepsound = GetFlatSound(Texman.GetName(toFollow.floorpic));
 			//sound volume is amplified by speed.
 			double soundVolume = f_vol * playerVel2D * 0.12; //multiplied by 0.12 because raw value is too high to be used as volume
 			//play the sound if it's non-null
-			if (stepsound != "none")
+			if (stepsound != "none" || !toFollow.CountInv("Sliding"))
 			{
 				if (stepsound == "step/dirt")
 				{

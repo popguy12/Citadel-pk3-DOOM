@@ -316,10 +316,10 @@ extend class CitadelWeapon
 	// Properties
 	Default
 	{
-		Weapon.BobRangeX 0.3;
-		Weapon.BobRangeY 0.5;
-		Weapon.BobSpeed 2.4;
-		Weapon.BobStyle "InverseSmooth";
+		Weapon.BobRangeX 3.0;
+		Weapon.BobRangeY 4.0;
+		Weapon.BobSpeed 0.75;
+		Weapon.BobStyle "Normal";
 		Weapon.WeaponScaleX 0.25;
 		Weapon.WeaponScaleY 0.25;
 		
