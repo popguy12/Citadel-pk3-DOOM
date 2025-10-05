@@ -23,8 +23,10 @@ class Citadel_DummyActor : Actor {}
 
 #include "ZScript/Weapons/Projectiles/BulletProjectile.zsc"
 
+#include "ZScript/Weapons/Projectiles/BulletDef.SmallCal.zsc"
+#include "ZScript/Weapons/Projectiles/BulletDef.LargeCal.zsc"
 
-
+#include "ZScript/Weapons/Projectiles/BulletDef.EnemyBullets.zsc"
 
 
 #include "ZScript/Weapons/Slot2/MetaMagnum.zsc"

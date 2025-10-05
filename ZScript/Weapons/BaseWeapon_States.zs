@@ -124,72 +124,52 @@ class CitadelWeapon : Weapon
 		
 		//Muzzle Flashes
 		MuzzleSmall:
-			TNT1 A 0 A_Jump(256, "S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8");
+			TNT1 A 0 A_Jump(256, "S1", "S2", "S3", "S4", "S5");
 		S1:
-			MUZC AA 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFS AA 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 		S2:
-			MUZC BB 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFS BB 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 		S3:
-			MUZC CC 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFS CC 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 		S4:
-			MUZC DD 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFS DD 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 		S5:
-			MUZC EE 1 A_OverlayAlpha(-3, alpha-0.5);
-			Stop;
-		S6:
-			MUZC FF 1 A_OverlayAlpha(-3, alpha-0.5);
-			Stop;
-		S7:
-			MUZC GG 1 A_OverlayAlpha(-3, alpha-0.5);
-			Stop;
-		S8:
-			MUZC HH 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFS EE 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 			
 		MuzzleMedium:
-			TNT1 A 0 A_Jump(256, "M1", "M2", "M3", "M4", "M5", "M6");
+			TNT1 A 0 A_Jump(256, "M1", "M2", "M3", "M4");
+			TNT1 A 0 A_OverlayScale(-3, 2.0, 2.0);
 		M1:
-			MUZA AA 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFM AA 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 		M2:
-			MUZA BB 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFM BB 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 		M3:
-			MUZA CC 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFM CC 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 		M4:
-			MUZA DD 1 A_OverlayAlpha(-3, alpha-0.5);
-			Stop;
-		M5:
-			MUZA EE 1 A_OverlayAlpha(-3, alpha-0.5);
-			Stop;
-		M6:
-			MUZA FF 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFM DD 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 			
-		MuzzleBig:
-			TNT1 A 0 A_Jump(256, "B1", "B2", "B3", "B4", "B5", "B6");
+		MuzzleSuppressed:
+			TNT1 A 0 A_Jump(256, "B1", "B2", "B3", "B4");
 		B1:
-			MUZB AA 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFM AA 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 		B2:
-			MUZB BB 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFM BB 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 		B3:
-			MUZB CC 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFM CC 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 		B4:
-			MUZB DD 1 A_OverlayAlpha(-3, alpha-0.5);
-			Stop;
-		B5:
-			MUZB EE 1 A_OverlayAlpha(-3, alpha-0.5);
-			Stop;
-		B6:
-			MUZB FF 1 A_OverlayAlpha(-3, alpha-0.5);
+			WMFM DD 1 A_OverlayAlpha(-3, alpha-0.5);
 			Stop;
 			
 	}

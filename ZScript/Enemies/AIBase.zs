@@ -203,7 +203,20 @@ class Citadel_MonsterBase : Actor
 			footstepWait = 9;
 		}
 	}
-
+	
+	void Citadel_FireMonsterBullet(string missile,int numbullets = 1,double angleOfs = 3, double pitchOfs = 3,int zofs = 32, int xyofs = 0)
+	{
+		int bul = max(1,abs(numbullets));
+		for(int i = 0; i < bul; i++)
+		{
+			actor bullet = A_SpawnProjectile(missile, zofs, xyofs, (frandom(angleOfs,-angleOfs)), CMF_AIMDIRECTION, self.pitch + (frandom(pitchOfs,-pitchOfs)));
+			if(bullet)
+			{
+				//This way i can run anything extra if need be.
+			}
+		}
+	}
+	
 	override void PostBeginPlay()
 	{
 		Super.PostBeginPlay();

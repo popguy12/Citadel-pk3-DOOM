@@ -32,7 +32,7 @@ Class Citadel_Trooper_CavalryRifle : Citadel_MonsterBase
 		{
 			A_Light(2);
 			//A_SpawnProjectile("Citadel_Kar98Bullets", 32, 0, (frandom(3,-3)), CMF_AIMDIRECTION, self.pitch + (frandom(3,-3)));
-			//Citadel_FireMonsterBullet("Citadel_EnemyKar98Bullets");
+			Citadel_FireMonsterBullet("Citadel_Enemy_127x99mm");
 			A_StartSound("Kar98/Fire", CHAN_AUTO, CHANF_OVERLAP);
 			AmmoInMag--;
 		}
