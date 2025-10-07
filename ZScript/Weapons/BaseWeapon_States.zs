@@ -32,18 +32,27 @@ class CitadelWeapon : Weapon
 			TNT1 A 1;
 			Goto WeaponReady;
 		
-		User1: //replaces BD Weapon Special (which is firemode here) attachment swap will have to be handled on a newly bound one
+		/*
+		[Pop] Heres how extra reload functionality will be handled
+		Zoom - BT_ZOOM - Alt Fire
+		User 1 - BT_USER1 - Unload Gun
+		User 2 - BT_USER2 - Cock Gun
+		User 3 - BT_USER3 - Firemode
+		User 4 - BT_USER4 - Melee
+		*/
+		
+		Zoom:
 			TNT1 A 1;
 			Goto WeaponReady;
-			
-		//Special Handling States
-		User4:
-			TNT1 A 0;
-			Goto Ready;
-		
+		User1: 
+			TNT1 A 1;
+			Goto WeaponReady;
 		User2:
 			TNT1 A 0;
-			Goto Ready;
+			Goto WeaponReady;
+		User3:
+			TNT1 A 0;
+			Goto WeaponReady;
 		
 		User3:
 		KnifeAttack:
