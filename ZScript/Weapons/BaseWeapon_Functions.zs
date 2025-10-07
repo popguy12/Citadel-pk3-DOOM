@@ -232,6 +232,7 @@ extend class CitadelWeapon
 	
 	action bool PressingFire(){return player.cmd.buttons & BT_ATTACK;}
     action bool PressingAltfire(){return player.cmd.buttons & BT_ALTATTACK;}
+	action bool PressingReload(){return player.cmd.buttons & BT_RELOAD;}
 	
 	//[Pop]weapons should ALWAYS bob, fucking fight me
 	override void DoEffect()
