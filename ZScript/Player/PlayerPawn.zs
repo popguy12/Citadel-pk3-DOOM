@@ -13,6 +13,8 @@ class CitadelPlayer : DoomPlayer
 		
 		int buttons = GetPlayerInput(-1, INPUT_BUTTONS);
 		
+		ArmorType = BCD_ArmorType;
+		
 		if(CountInv("IsProne"))
 		{
 			Height = 16;
@@ -78,12 +80,15 @@ class CitadelPlayer : DoomPlayer
 	override void PostBeginPlay()
 	{
 		Super.PostBeginPlay();
-		//ArmorType = 0; //Skin
+		A_Overlay(10, "FirstPersonTorso");
+		A_Overlay(-51, "FirstPersonLegsStand", true);
 	}
 
 	int grenadecooktimer;
 	
 	int ArmorType;
+	
+	bool PlayerKicking;
 	
 	bool alternateGMSound;
 	
@@ -177,6 +182,7 @@ class CitadelPlayer : DoomPlayer
 			
 		KickCheckTakeToken:
 			TNT1 A 0;
+			TNT1 A 0 A_Overlay(-51, "FirstPersonLegsStand", true);
 			TNT1 A 1 A_TakeInventory("Kicking",1);
 			Stop;
 		KickCheck:
@@ -186,6 +192,8 @@ class CitadelPlayer : DoomPlayer
 				A_OverlayScale(-50, 0.25, 0.25, WOF_RELATIVE);
 				A_OverlayFlags(-50, PSPF_ADDWEAPON, false);
 				A_OverlayFlags(-50, PSPF_ADDBOB, false);
+				A_TakeInventory("Kicking", 1);
+				A_GiveInventory("Kicking", 1);
 			}
 			TNT1 A 1;
 		DoKick:
@@ -394,8 +402,8 @@ class CitadelPlayer : DoomPlayer
 			TNT1 A 0 A_JumpIf(!PressingCrouch() || JustReleased(BT_CROUCH), "SlideEnd");
 			Loop;
 		SlideEnd:
-			TNT1 A 0 A_TakeInventory("Sliding");
 			KCKA BA 2;
+			TNT1 A 0 A_TakeInventory("Sliding");
 			Goto KickCheckTakeToken;
 		AirKick:
 			TNT1 A 0 A_OverlayOffset(-50, 800, 296);
@@ -424,6 +432,141 @@ class CitadelPlayer : DoomPlayer
 			KCKC G 2;
 			TNT1 A 0;
 			Goto KickCheckTakeToken;
+			
+		
+		
+		FirstPersonLegsStand:
+			MLST A 0;
+			#### A 0 A_OverlayScale(-51, 0.25, 0.25, WOF_RELATIVE);
+			#### A 0 A_OverlayFlags(-51, PSPF_ADDBOB, false);
+			#### A 0 A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
+			#### A 0 A_JumpIf(momZ != 0, "FirstPersonLegsJump");
+			#### A 0 A_JumpIf(GetCrouchFactor() < 0.6, "FirstPersonLegsCrouch");
+			#### A 0 A_JumpIf(momx > 0.8 || momx < -0.8 || momy > 0.8 || momy < -0.8, "FirstPersonLegsWalk");
+			#### A 1 
+			{
+				A_OverlayOffset(-51, 379, (-pitch*2)+408);
+			}
+			Loop;
+		FirstPersonLegsCrouch:
+			MLCR A 0;
+			MLCR B 0 A_JumpIf(self.ArmorType == 1, "Faith");
+			MLCR C 0 A_JumpIf(self.ArmorType == 2, "Devotion");
+			MLCR D 0 A_JumpIf(self.ArmorType == 3, "Zealot");
+		Skin:
+			MLCR A 0;
+			Goto CrouchCont;
+		Faith:
+			MLCR B 0;
+			Goto CrouchCont;
+		Devotion:
+			MLCR C 0;
+			Goto CrouchCont;
+		Zealot:
+			MLCR D 0;
+			Goto CrouchCont;
+		CrouchCont:
+			#### # 0 A_JumpIf(momZ != 0, "FirstPersonLegsJump");
+			#### # 0 A_JumpIf(GetCrouchFactor() > 0.6, "FirstPersonLegsStand");
+			#### # 0 A_JumpIf(momx > 0.8 || momx < -0.8 || momy > 0.8 || momy < -0.8, "FirstPersonLegsCrouchWalk");
+			#### # 1 
+			{
+				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
+				A_OverlayOffset(-51, 379, (-pitch*2)+388);
+			}
+			Loop;
+		FirstPersonLegsJump:
+			MLJU A 0;
+			#### A 0 A_JumpIf(momZ <= 0, "FirstPersonLegsFall");
+			#### A 1 
+			{
+				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
+				A_OverlayOffset(-51, 379, (-pitch*2)+408);
+			}
+			Loop;
+		FirstPersonLegsFall:
+			MLFA A 0;
+			#### A 1 
+			{
+				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
+				A_OverlayOffset(-51, 379, (-pitch*2)+408);
+			}
+			#### A 0 A_JumpIf(momZ == 0, "FirstPersonLegsStand");
+			Loop;
+		FirstPersonLegsCrouchWalk:
+			MLCW A 0;
+			#### AABBCCBBAA 1
+			{
+				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
+				A_OverlayOffset(-51, 379, (-pitch*2)+408);
+				If(momZ != 0)
+					{ return ResolveState("FirstPersonLegsJump"); }
+				Else If(GetCrouchFactor() > 0.6)
+					{ return ResolveState("FirstPersonLegsStand"); }
+				return ResolveState(null);
+			}
+			#### DDEEFFEEDD 1
+			{
+				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
+				A_OverlayOffset(-51, 379, (-pitch*2)+408);
+				If(momZ != 0)
+					{ return ResolveState("FirstPersonLegsJump"); }
+				Else If(GetCrouchFactor() > 0.6)
+					{ return ResolveState("FirstPersonLegsStand"); }
+				return ResolveState(null);
+			}
+			Goto FirstPersonLegsCrouch;
+		FirstPersonLegsWalk:
+			MLSW A 0;
+			#### AABBCCDDEE 1
+			{
+				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
+				A_OverlayOffset(-51, 379, (-pitch*2)+428);
+				If(momZ != 0)
+					{ return ResolveState("FirstPersonLegsJump"); }
+				Else If(GetCrouchFactor() < 0.6)
+					{ return ResolveState("FirstPersonLegsCrouch"); }
+				return ResolveState(null);
+			}
+			#### FFGGHHIIJJ 1
+			{
+				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
+				A_OverlayOffset(-51, 379, (-pitch*2)+428);
+				If(momZ != 0)
+					{ return ResolveState("FirstPersonLegsJump"); }
+				Else If(GetCrouchFactor() < 0.6)
+					{ return ResolveState("FirstPersonLegsCrouch"); }
+				return ResolveState(null);
+			}
+			Goto FirstPersonLegsStand;
+			
+		FirstPersonTorso:
+			MLBO # 0 A_OverlayScale(10, 0.25, 0.25, WOF_RELATIVE);
+			MLBO A 0;
+			MLBO B 0 A_JumpIf(self.ArmorType == 1, "FaithUpper");
+			MLBO C 0 A_JumpIf(self.ArmorType == 2, "DevotionUpper");
+			MLBO D 0 A_JumpIf(self.ArmorType == 3, "ZealotUpper");
+		SkinUpper:
+			MLBO A 0;
+			Goto TorsoCont;
+		FaithUpper:
+			MLBO B 0;
+			Goto TorsoCont;
+		DevotionUpper:
+			MLBO C 0;
+			Goto TorsoCont;
+		ZealotUpper:
+			MLBO D 0;
+			Goto TorsoCont;
+		TorsoCont:
+			#### # 1 
+			{
+				A_OverlayFlags(10, PSPF_ADDWEAPON, False);
+				A_OverlayFlags(10, PSPF_ADDBOB, False);
+				A_OverlayOffset(10, 385, (-pitch*2)+630);
+			}
+			Goto FirstPersonTorso;
+			
 	}
 }
 
@@ -626,6 +769,7 @@ Class QuickKick : CustomInventory
 				{
 					invoker.CooldownTimer = invoker.CooldownTimer - 20;
 					invoker.owner.A_Overlay(-50, "KickCheck");
+					invoker.owner.A_ClearOverlays(-51,-51);
 				}
 			}
 			TNT1 A 20;

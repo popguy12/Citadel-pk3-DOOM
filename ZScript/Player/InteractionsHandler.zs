@@ -126,8 +126,8 @@ class BD_Footsteps : Actor
 				//Run armor sound code here
 				/*
 				Skin 0
-				Devotion 0.3
-				Faith 0.6
+				Faith 0.3
+				Devotion 0.6
 				Zealot 0.9
 				*/
 				toFollow.A_StartSound("metal/armor", CHAN_AUTO, CHANF_LOCAL|CHANF_UI|CHANF_OVERLAP, volume: (0.25 * BCD_ArmorType));
