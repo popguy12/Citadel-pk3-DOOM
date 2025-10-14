@@ -445,7 +445,7 @@ class CitadelPlayer : DoomPlayer
 			#### A 0 A_JumpIf(momx > 0.8 || momx < -0.8 || momy > 0.8 || momy < -0.8, "FirstPersonLegsWalk");
 			#### A 1 
 			{
-				A_OverlayOffset(-51, 379, (-pitch*2)+408);
+				A_OverlayOffset(-51, 385, (-pitch*2)+428);
 			}
 			Loop;
 		FirstPersonLegsCrouch:
@@ -481,7 +481,7 @@ class CitadelPlayer : DoomPlayer
 			#### A 1 
 			{
 				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
-				A_OverlayOffset(-51, 379, (-pitch*2)+408);
+				A_OverlayOffset(-51, 385, (-pitch*2)+408);
 			}
 			Loop;
 		FirstPersonLegsFall:
@@ -489,7 +489,7 @@ class CitadelPlayer : DoomPlayer
 			#### A 1 
 			{
 				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
-				A_OverlayOffset(-51, 379, (-pitch*2)+408);
+				A_OverlayOffset(-51, 385, (-pitch*2)+408);
 			}
 			#### A 0 A_JumpIf(momZ == 0, "FirstPersonLegsStand");
 			Loop;
@@ -498,7 +498,7 @@ class CitadelPlayer : DoomPlayer
 			#### AABBCCBBAA 1
 			{
 				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
-				A_OverlayOffset(-51, 379, (-pitch*2)+408);
+				A_OverlayOffset(-51, 385, (-pitch*2)+408);
 				If(momZ != 0)
 					{ return ResolveState("FirstPersonLegsJump"); }
 				Else If(GetCrouchFactor() > 0.6)
@@ -508,7 +508,7 @@ class CitadelPlayer : DoomPlayer
 			#### DDEEFFEEDD 1
 			{
 				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
-				A_OverlayOffset(-51, 379, (-pitch*2)+408);
+				A_OverlayOffset(-51, 385, (-pitch*2)+408);
 				If(momZ != 0)
 					{ return ResolveState("FirstPersonLegsJump"); }
 				Else If(GetCrouchFactor() > 0.6)
@@ -521,7 +521,7 @@ class CitadelPlayer : DoomPlayer
 			#### AABBCCDDEE 1
 			{
 				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
-				A_OverlayOffset(-51, 379, (-pitch*2)+428);
+				A_OverlayOffset(-51, 385, (-pitch*2)+428);
 				If(momZ != 0)
 					{ return ResolveState("FirstPersonLegsJump"); }
 				Else If(GetCrouchFactor() < 0.6)
@@ -531,7 +531,7 @@ class CitadelPlayer : DoomPlayer
 			#### FFGGHHIIJJ 1
 			{
 				A_OverlayFlags(-51, PSPF_ADDWEAPON, False);
-				A_OverlayOffset(-51, 379, (-pitch*2)+428);
+				A_OverlayOffset(-51, 385, (-pitch*2)+428);
 				If(momZ != 0)
 					{ return ResolveState("FirstPersonLegsJump"); }
 				Else If(GetCrouchFactor() < 0.6)
