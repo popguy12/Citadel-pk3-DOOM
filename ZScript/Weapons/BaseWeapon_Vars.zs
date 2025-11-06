@@ -22,6 +22,13 @@ extend class CitadelWeapon
 	int AmmoGive3;
 	int AmmoUse3;
 	
+	int breathCounter;          // Increments each frame to drive the sine wave
+	int adsHoldFrames;          // Delays breathing - holds steady for first 4 frames
+	double PhaseX;        // Random starting point for horizontal sway
+	double PhaseY;        // Random starting point for vertical sway
+	double FreqX;         // Random frequency direction for X (±1.2)
+	double FreqY;         // Random frequency direction for Y (±1.4)
+	
 	property AmmoGive3: AmmoGive3;
 	property AmmoUse3: AmmoUse3;
 	property AmmoType3: AmmoType3;

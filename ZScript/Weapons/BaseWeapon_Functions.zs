@@ -263,6 +263,8 @@ extend class CitadelWeapon
 		}
 		else
 		{
+			breathcounter = 0;
+			adsholdframes = 0;
 			WeaponScaleX = 0.25;
 			WeaponScaleY = 0.25;
 		}
