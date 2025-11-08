@@ -1,0 +1,10 @@
+// Custom key bindings for Custom Pistol
+// This file goes in the root of your pk3 file (custompistol.pk3/KEYCONF)
+
+// Add a new command for toggling fire mode
+addkeysection "Custom Pistol" custompistol
+addmenukey "Toggle Fire Mode" +user1
+
+// Default key binding: C key
+// Players can rebind this in Options > Customize Controls > Custom Pistol
+defaultbind c +user1

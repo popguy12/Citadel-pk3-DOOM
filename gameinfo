@@ -1,4 +1,0 @@
-STARTUPTITLE = "Citadel DooM"
-STARTUPCOLORS = "#8E8E8E", "#000000"
-STARTUPTYPE = "Hexen"
-NoRandomPlayerClasses = true 

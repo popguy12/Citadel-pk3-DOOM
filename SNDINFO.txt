@@ -1,56 +1,24 @@
-menu/activate	"Sounds/Menu/MenuOpen.ogg"
-menu/backup	"Sounds/Menu/MenuBack.ogg"
-menu/prompt	"Sounds/Menu/MenuPrompt.ogg"
-menu/cursor	"Sounds/Menu/MenuMove.ogg"
-menu/change	"Sounds/Menu/MenuSlider.ogg"
-menu/invalid	"Sounds/Menu/MenuDeny.ogg"
-menu/dismiss	"Sounds/Menu/MenuClose.ogg"
-menu/choose	"Sounds/Menu/MenuSelect.ogg"
-menu/clear	"Sounds/Menu/MenuClose.ogg"
-	
-//Bullet Ricochet
-$random effect/ricochet
-{
-	effect/ricochet1
-	effect/ricochet2
-	effect/ricochet3
-	effect/ricochet4
-	effect/ricochet5
-	effect/ricochet6
-	effect/ricochet7
-	effect/ricochet8
-	effect/ricochet9
-	effect/ricochet10
-	effect/ricochet11
-	effect/ricochet12
-	effect/ricochet13
-	effect/ricochet14
-	effect/ricochet15
-}
-effect/ricochet1	"Sounds/Effects/Ricochet/BULRIC1.wav"
-effect/ricochet2	"Sounds/Effects/Ricochet/BULRIC2.wav"
-effect/ricochet3	"Sounds/Effects/Ricochet/BULRIC3.wav"
-effect/ricochet4	"Sounds/Effects/Ricochet/BULRIC4.wav"
-effect/ricochet5	"Sounds/Effects/Ricochet/BULRIC5.wav"
-effect/ricochet6	"Sounds/Effects/Ricochet/BULRIC6.wav"
-effect/ricochet7	"Sounds/Effects/Ricochet/BULRIC7.wav"
-effect/ricochet8	"Sounds/Effects/Ricochet/BULRIC8.wav"
-effect/ricochet9	"Sounds/Effects/Ricochet/BULRIC9.wav"
-effect/ricochet10	"Sounds/Effects/Ricochet/BULRIC10.wav"
-effect/ricochet11	"Sounds/Effects/Ricochet/BULRIC11.wav"
-effect/ricochet12	"Sounds/Effects/Ricochet/BULRIC12.wav"
-effect/ricochet13	"Sounds/Effects/Ricochet/BULRIC13.wav"
-effect/ricochet14	"Sounds/Effects/Ricochet/BULRIC14.wav"
-effect/ricochet15	"Sounds/Effects/Ricochet/BULRIC15.wav"
+custompistol/fire           sounds/pistol/fire.ogg
+custompistol/slide          sounds/pistol/slide.ogg
+custompistol/unloadmag      sounds/pistol/unload_mag.ogg
+custompistol/unloadmagempty sounds/pistol/unload_mag_empty.ogg
+custompistol/loadmag        sounds/pistol/load_mag.ogg
+custompistol/loadmagempty   sounds/pistol/load_mag_empty.ogg
+custompistol/empty          sounds/pistol/load_mag_empty.ogg
+custompistol/firemode       sounds/pistol/fire_mode.ogg
 
-$RANDOM effect/explosion
-{
-	effect/explosion1
-	effect/explosion2
-	effect/explosion3
-	effect/explosion4
-}
-effect/explosion1	"Sounds/Effects/EXPLO01"
-effect/explosion2	"Sounds/Effects/EXPLO02"
-effect/explosion3	"Sounds/Effects/EXPLO03"
-effect/explosion4	"Sounds/Effects/EXPLO04"
+custompistol/casing1       sounds/pistol/casing1.ogg
+custompistol/casing2       sounds/pistol/casing2.ogg
+custompistol/casing3       sounds/pistol/casing3.ogg
+custompistol/casing4       sounds/pistol/casing4.ogg
+
+customsmg/fire          sounds/smg/smg_fire.ogg
+customsmg/load          sounds/smg/smg_load.ogg
+customsmg/unload        sounds/smg/smg_unload.ogg
+customsmg/cock          sounds/smg/smg_cock.ogg
+customsmg/empty         sounds/smg/smg_empty.ogg
+
+customsmg/casing1       sounds/smg/casing1.ogg
+customsmg/casing2       sounds/smg/casing2.ogg
+customsmg/casing3       sounds/smg/casing3.ogg
+customsmg/casing4       sounds/smg/casing4.ogg

@@ -1,9 +1,0 @@
-class Citadel_44Magnum : Citadel_Projectile
-{
-	Default
-	{
-		Citadel_Projectile.BaseDamage 7;
-		Citadel_Projectile.RipperCount 3;
-		Obituary "";
-	}
-}
