@@ -7,4 +7,30 @@ addmenukey "Toggle Fire Mode" +user1
 
 // Default key binding: C key
 // Players can rebind this in Options > Customize Controls > Custom Pistol
-defaultbind c +user1
+defaultbind c +user1  
+
+addkeysection "Citadel Doom Keys" outlawskeys  
+
+addmenukey "Throw Grenade" ThrowGrenade
+alias ThrowGrenade "use ThrowableGrenade"
+defaultbind G +ThrowGrenade
+
+addmenukey "Throw 9-Bang" ThrowBang
+alias ThrowBang "use ThrowableBang"
+defaultbind H +ThrowBang
+
+addmenukey "Holster Gun" Holster
+alias Holster "use HolsterYourShitPrivate"
+defaultbind H +Holster
+
+addmenukey "Toggle Prone" Prone
+alias Prone "use QuickProne"
+defaultbind LALT +Prone
+
+addmenukey "Kick" Kick
+alias Kick "use QuickKick"
+defaultbind Q +Kick
+
+addmenukey "Weapon Attachment" WepAttach
+alias WepAttach "use SwapAttachment"
+defaultbind B +WepAttach

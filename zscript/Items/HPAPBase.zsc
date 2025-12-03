@@ -1,0 +1,25 @@
+class Citadel_Health : Health abstract
+{
+	mixin Citadel_BetterPickupSound;
+}
+
+class Citadel_Armor : BasicArmorPickup abstract
+{
+	mixin Citadel_BetterPickupSound;
+	
+	Default
+	{
+		+INVENTORY.AUTOACTIVATE;
+		Inventory.MaxAmount 0;
+	}
+}
+
+class Citadel_Armor2 : BasicArmorBonus abstract
+{
+	mixin Citadel_BetterPickupSound;
+	
+	Default
+	{
+		+INVENTORY.AUTOACTIVATE;
+	}
+}

@@ -1,0 +1,14 @@
+class Citadel_Ammo : Ammo
+{
+    int cap,ca,res; name ammotype; string p;
+	property ammotype : ammotype;
+	
+	mixin Citadel_BetterPickupSound;
+	
+    Default
+    {
+        +FLOORCLIP
+	    +DONTGIB
+	    +INVENTORY.IGNORESKILL
+    }
+}

@@ -1,9 +1,46 @@
-version "4.5.0"
+version "4.14.2"
 
-#include "zscript/weapons/pistol.zs"
-#include "zscript/weapons/smg.zs"
+class Citadel_DummyActor : Actor {}
+
+#include "ZScript/CitadelCore.zsc"
+#include "ZScript/MathNMixins.zs"
+
+#include "ZScript/Player/PlayerPawn.zs"
+#include "ZScript/Player/InteractionsHandler.zs"
+//#include "ZScript/HUD.zs"
 #include "zscript/hud/hud.zs"
-#include "zscript/effects/smoke.zs"
-#include "zscript/effects/casing.zs"
 #include "zscript/sway/sway.zs"
 #include "zscript/sway/menu.zs"
+
+#include "ZScript/Weapons/BaseWeapon_States.zs"
+#include "ZScript/Weapons/BaseWeapon_Functions.zs"
+#include "ZScript/Weapons/BaseWeapon_Vars.zs"
+#include "ZScript/Weapons/QuickGrenade.zs"
+
+#include "ZScript/Items/AmmoBase.zsc"
+#include "ZScript/Items/HPAPBase.zsc"
+#include "ZScript/Items/PowerupsBase.zsc"
+
+#include "ZScript/Effects/PBSmoke.zs"
+#include "ZScript/Effects/Explosion.zsc"
+#include "zscript/effects/smoke.zs"
+#include "zscript/effects/casing.zs"
+
+#include "ZScript/Weapons/Projectiles/BulletProjectile.zsc"
+
+#include "ZScript/Weapons/Projectiles/BulletDef.SmallCal.zsc"
+#include "ZScript/Weapons/Projectiles/BulletDef.LargeCal.zsc"
+
+#include "ZScript/Weapons/Projectiles/BulletDef.EnemyBullets.zsc"
+
+#include "zscript/weapons/slot2/pistol.zs"
+//#include "ZScript/Weapons/Slot2/MetaMagnum.zsc"
+
+#include "zscript/weapons/slot4/smg.zs"
+
+#include "ZScript/Weapons/Slot10/Holster.zsc"
+
+
+
+#include "ZScript/Enemies/AIBase.zs"
+//#include "ZScript/Enemies/Humans/Troopers/CavalryRifle.zs"

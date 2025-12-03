@@ -1,0 +1,9 @@
+class Citadel_127x99mm : Citadel_Projectile
+{
+	Default
+	{
+		Citadel_Projectile.BaseDamage 100;
+		Citadel_Projectile.RipperCount 3;
+		Obituary "";
+	}
+}

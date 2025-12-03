@@ -1,0 +1,10 @@
+class Citadel_Enemy_127x99mm : Citadel_127x99mm
+{
+	Default
+	{
+		Speed 50;
+		Citadel_Projectile.BaseDamage 25;
+		Citadel_Projectile.RipperCount 3;
+		Obituary "";
+	}
+}
