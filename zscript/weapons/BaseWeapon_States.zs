@@ -12,19 +12,12 @@ class CitadelWeapon : Weapon
 			Wait;
 		Ready:
 			TNT1 A 1;
-			Goto WeaponReady;
-		/*[Pop] Note on extra timings per weapon type
-		Pistols have no delay
-		SMG and Shotgun class weapons have 6 tic delay
-		Rifle, DMR, and Sniper weapons have 12 tic delay
-		Assault Rifle and Battle Rifle class weapons have 10 tic delay
-		LMGs and above have 16 tic delay.
-		*/
+			Goto LoadAlternativeSprites;
 		
 		//Dummy state for loading alternative sprites into virtual memory
 		LoadAlternativeSprites:
-			TNT1 A 1;
-			Stop;
+			TNT1 A 0;
+			Goto WeaponReady;
 		WeaponReady:
 			TNT1 A 1 Citadel_WeaponReady();
 			Loop;
